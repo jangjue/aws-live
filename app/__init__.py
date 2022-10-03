@@ -12,10 +12,16 @@ from config import app_config
 # db = SQLAlchemy()
 login_manager = LoginManager()
 
-# bucket = custombucket
-# region = customregion
+def create_app(config_name):
+    # Initialize the app
+    app = Flask(__name__, instance_relative_config = True)
+    app.config.from_object(app_config[config_name])
+    app.config.from_pyfile('config.py')
+    
+    bucket = custombucket
+    region = customregion
 
-db = connections.Connection(
+    db = connections.Connection(
     host=customhost,
     port=3306,
     user=customuser,
@@ -23,13 +29,6 @@ db = connections.Connection(
     db=customdb
 
 )
-
-
-def create_app(config_name):
-    # Initialize the app
-    app = Flask(__name__, instance_relative_config = True)
-    app.config.from_object(app_config[config_name])
-    app.config.from_pyfile('config.py')
     
     Bootstrap(app)
     db.init_app(app)
