@@ -10,7 +10,7 @@ from config import app_config
 # db = SQLAlchemy()
 login_manager = LoginManager()
 
-bucket = custombucket
+# bucket = custombucket
 region = customregion
 
 db = connections.Connection(
