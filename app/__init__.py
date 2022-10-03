@@ -13,7 +13,7 @@ from config import app_config
 login_manager = LoginManager()
 
 # bucket = custombucket
-region = customregion
+# region = customregion
 
 db = connections.Connection(
     host=customhost,
